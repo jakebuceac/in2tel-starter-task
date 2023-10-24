@@ -14,3 +14,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/hostedpbx', 'App\Http\Controllers\Api\HostedPbxController@index');
+Route::get('/hostedpbx/{hostedPbx}', 'App\Http\Controllers\Api\HostedPbxController@show');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\HostedPbxCollection;
+use App\Http\Resources\HostedPbxResource;
 use App\Models\HostedPbx;
 use Illuminate\Http\Request;
 
@@ -27,5 +28,10 @@ class HostedPbxController extends Controller
         }
 
         return new HostedPbxCollection($query->paginate(15));
+    }
+
+    public function show(HostedPbx $hostedPbx): HostedPbxResource
+    {
+        return new HostedPbxResource($hostedPbx);
     }
 }
