@@ -1,13 +1,13 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\HostedPbxController;
 
 use App\Enums\PbxStatusEnum;
 use App\Enums\SyncStatusEnum;
 use App\Models\HostedPbx;
 use Tests\TestCase;
 
-class HostedPBXControllerTest extends TestCase
+class IndexTest extends TestCase
 {
     public function test_index_endpoint_returns_all_host_pbx(): void
     {
