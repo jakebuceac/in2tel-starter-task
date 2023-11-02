@@ -27,8 +27,6 @@ class IndexTest extends TestCase
             ->assertJsonStructure([
                 'data',
                 'status',
-                'links',
-                'meta',
             ]);
     }
 
@@ -76,18 +74,5 @@ class IndexTest extends TestCase
                 'last_modified' => $hostPbxs[1]->last_modified,
                 'status' => 'OK',
             ]);
-    }
-
-    public function test_index_endpoint_uses_pagination(): void
-    {
-        HostedPbx::factory()->count(16)->create();
-
-        $this->getJson('/api/hostedpbx')
-            ->assertSuccessful()
-            ->assertJsonCount(15, 'data');
-
-        $this->getJson('/api/hostedpbx?page=2')
-            ->assertSuccessful()
-            ->assertJsonCount(1, 'data');
     }
 }

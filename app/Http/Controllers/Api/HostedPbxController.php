@@ -28,7 +28,7 @@ class HostedPbxController extends Controller
             }
         }
 
-        return new HostedPbxCollection($query->paginate(15));
+        return new HostedPbxCollection($query->get());
     }
 
     public function show(HostedPbx $hostedPbx): HostedPbxResource
@@ -39,6 +39,8 @@ class HostedPbxController extends Controller
     public function update(UpdateHostPbxRequest $request, HostedPbx $hostedPbx): HostedPbxResource
     {
         $hostedPbx->update($request->validated());
+        $hostedPbx->last_modified = now();
+        $hostedPbx->save();
 
         return new HostedPbxResource($hostedPbx);
     }

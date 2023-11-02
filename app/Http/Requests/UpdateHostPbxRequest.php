@@ -12,16 +12,16 @@ class UpdateHostPbxRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'caco_customer_id' => 'sometimes|integer',
-            'caco_customer_name' => 'sometimes|string',
-            'caco_group_id' => 'sometimes|integer',
-            'caco_group_name' => 'sometimes|string',
+            'caco_customer_id' => 'sometimes|integer|nullable',
+            'caco_customer_name' => 'sometimes|string|nullable',
+            'caco_group_id' => 'sometimes|integer|nullable',
+            'caco_group_name' => 'sometimes|string|nullable',
             'pbx_status' => [new Enum(PbxStatusEnum::class)],
             'sync_status' => [new Enum(SyncStatusEnum::class)],
-            'extensions_licenced' => 'sometimes|integer',
-            'extensions_provisioned' => 'sometimes|integer',
-            'extensions_in_use' => 'sometimes|integer',
-            'sync_extensions_matched' => 'sometimes|integer',
+            'extensions_licenced' => 'sometimes|integer|nullable',
+            'extensions_provisioned' => 'sometimes|integer|nullable',
+            'extensions_in_use' => 'sometimes|integer|nullable',
+            'sync_extensions_matched' => 'sometimes|integer|nullable',
         ];
     }
 }
