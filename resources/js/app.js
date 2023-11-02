@@ -86,7 +86,7 @@ function renderModal(id, action) {
                 $('p').empty();
 
                 $.each(jsonObject, function(key, value) {
-                    $("#" + key).val(value);
+                    $("#" + key).val(value).prop('readonly', false);;
                 });
             } else {
                 $('#modalLabel').text(action + ': ' + jsonObject.instance_name);
