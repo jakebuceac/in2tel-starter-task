@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         DB::unprepared(file_get_contents(storage_path('/app/public/hosted_pbx.sql')));
-        DB::table('hosted_pbx')->truncate();
     }
 
     /**

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateHostPbxRequest;
 use App\Http\Resources\HostedPbxCollection;
+use App\Http\Resources\HostedPbxResource;
 use App\Models\HostedPbx;
 use Illuminate\Http\Request;
 
@@ -26,6 +28,20 @@ class HostedPbxController extends Controller
             }
         }
 
-        return new HostedPbxCollection($query->paginate(15));
+        return new HostedPbxCollection($query->get());
+    }
+
+    public function show(HostedPbx $hostedPbx): HostedPbxResource
+    {
+        return new HostedPbxResource($hostedPbx);
+    }
+
+    public function update(UpdateHostPbxRequest $request, HostedPbx $hostedPbx): HostedPbxResource
+    {
+        $hostedPbx->update($request->validated());
+        $hostedPbx->last_modified = now();
+        $hostedPbx->save();
+
+        return new HostedPbxResource($hostedPbx);
     }
 }

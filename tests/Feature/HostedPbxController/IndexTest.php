@@ -1,13 +1,13 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\HostedPbxController;
 
 use App\Enums\PbxStatusEnum;
 use App\Enums\SyncStatusEnum;
 use App\Models\HostedPbx;
 use Tests\TestCase;
 
-class HostedPBXControllerTest extends TestCase
+class IndexTest extends TestCase
 {
     public function test_index_endpoint_returns_all_host_pbx(): void
     {
@@ -27,8 +27,6 @@ class HostedPBXControllerTest extends TestCase
             ->assertJsonStructure([
                 'data',
                 'status',
-                'links',
-                'meta',
             ]);
     }
 
@@ -76,18 +74,5 @@ class HostedPBXControllerTest extends TestCase
                 'last_modified' => $hostPbxs[1]->last_modified,
                 'status' => 'OK',
             ]);
-    }
-
-    public function test_index_endpoint_uses_pagination(): void
-    {
-        HostedPbx::factory()->count(16)->create();
-
-        $this->getJson('/api/hostedpbx')
-            ->assertSuccessful()
-            ->assertJsonCount(15, 'data');
-
-        $this->getJson('/api/hostedpbx?page=2')
-            ->assertSuccessful()
-            ->assertJsonCount(1, 'data');
     }
 }
