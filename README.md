@@ -3,7 +3,7 @@
 
 The project encompasses a web application that allows users to access HostPbx data through a table view and API routes.
 
-The In2tel Starter Task uses Laravel to manage both view and API routes.
+The in2tel Starter Task uses Laravel to manage both view and API routes.
 
 jQuery is also used to build the Datatable that outputs the HostPbx data. 
 
